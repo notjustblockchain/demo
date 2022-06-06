@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="project">
+      <h2 data-cy="projectDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.project.detail.title">Project</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ project.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.project.projectCode">Project Code</span></dt>
+        <dd>
+          <span>{{ project.projectCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.project.status">Status</span></dt>
+        <dd>
+          <span>{{ project.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.project.program">Program</span></dt>
+        <dd>
+          <div *ngIf="project.program">
+            <a [routerLink]="['/program', project.program?.id, 'view']">{{ project.program?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/project', project.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

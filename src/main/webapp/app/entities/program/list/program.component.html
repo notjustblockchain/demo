@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="ProgramHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.program.home.title">Programs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.program.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-program"
+        [routerLink]="['/program/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.program.home.createLabel"> Create a new Program </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="programs?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.program.home.notFound">No programs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="programs && programs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.program.programNane">Program Nane</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.program.sponser">Sponser</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.program.sector">Sector</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let program of programs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/program', program.id, 'view']">{{ program.id }}</a>
+          </td>
+          <td>{{ program.programNane }}</td>
+          <td>{{ program.sponser }}</td>
+          <td>
+            <div *ngIf="program.sector">
+              <a [routerLink]="['/sector', program.sector?.id, 'view']">{{ program.sector?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/program', program.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/program', program.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(program)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

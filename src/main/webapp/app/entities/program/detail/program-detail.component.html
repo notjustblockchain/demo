@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="program">
+      <h2 data-cy="programDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.program.detail.title">Program</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ program.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.program.programNane">Program Nane</span></dt>
+        <dd>
+          <span>{{ program.programNane }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.program.sponser">Sponser</span></dt>
+        <dd>
+          <span>{{ program.sponser }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.program.sector">Sector</span></dt>
+        <dd>
+          <div *ngIf="program.sector">
+            <a [routerLink]="['/sector', program.sector?.id, 'view']">{{ program.sector?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/program', program.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20220606142002",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "sector",
+  "fields": [
+    {
+      "fieldName": "sectorName",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Sector",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "program",
+      "otherEntityRelationshipName": "sector",
+      "relationshipName": "program",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "sector",
+      "relationshipName": "organization",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

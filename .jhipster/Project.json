@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20220606142004",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "project",
+  "fields": [
+    {
+      "fieldName": "projectCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Project",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "program",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "program",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

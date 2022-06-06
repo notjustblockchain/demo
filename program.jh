@@ -1,0 +1,38 @@
+
+entity Organization {
+	organiztaionName String required
+}
+
+entity Sector {
+	
+    sectorName String
+}
+
+
+
+
+entity Program {
+	programNane String,
+	sponser String
+}
+
+entity Project {
+	projectCode String,
+	status String	
+	
+}
+
+
+
+
+relationship OneToMany {
+	Organization{sector} to Sector
+}
+
+relationship OneToMany {
+	Sector{program} to Program
+}
+
+relationship OneToMany {
+	Program{project} to Project
+}
